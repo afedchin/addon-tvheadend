@@ -19,9 +19,11 @@ devices:
 ports:
   9981/tcp: 9981
   9982/tcp: 9982
+  8888/tcp: 8888
 ports_description:
   9981/tcp: TVH Web Interface
   9982/tcp: TVH HTSP
+  8888/tcp: OSCam Web Interface
 map:
   - "config:rw"
 options:
