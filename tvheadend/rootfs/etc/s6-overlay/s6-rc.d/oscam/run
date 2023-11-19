@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv bashio
+#!/command/with-contenv bashio
 # shellcheck shell=bash
 # ==============================================================================
 # Home Assistant Community Add-on: TVHeadend
@@ -8,10 +8,10 @@
 bashio::log.info "Starting OSCam..."
 
 # Ensure config directory exists
-if ! bashio::fs.directory_exists '/config/oscam/'; then
-    bashio::log.info "Creating default configuration directory at /config/oscam/"
-    mkdir -p /config/oscam
-    cp /etc/oscam/* /config/oscam/
+if ! bashio::fs.directory_exists '/homeassistant/oscam/'; then
+    bashio::log.info "Creating default configuration directory at /homeassistant/oscam/"
+    mkdir -p /homeassistant/oscam
+    cp /etc/oscam/* /homeassistant/oscam/
 fi
 
-exec /usr/bin/oscam -c /config/oscam
+exec /usr/bin/oscam -c /homeassistant/oscam

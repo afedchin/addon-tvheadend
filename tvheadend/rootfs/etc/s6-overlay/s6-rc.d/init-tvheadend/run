@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv bashio
+#!/command/with-contenv bashio
 # shellcheck shell=bash
 # ==============================================================================
 # Home Assistant Community Add-on: TVHeadend
@@ -6,7 +6,7 @@
 # ==============================================================================
 
 check_webgrabplus(){
-    if [ -z "$(ls -A /config/tvheadend/wg++)" ]; then return 1; else return 0; fi
+    if [ -z "$(ls -A /homeassistant/tvheadend/wg++)" ]; then return 1; else return 0; fi
 }
 
 webgrabplus_install(){
@@ -18,8 +18,8 @@ webgrabplus_install(){
             && wget http://webgrabplus.com/sites/default/files/download/SW/V3.3.0/WebGrabPlus_V3.3_install.tar.gz  \
             && tar -zxvf WebGrabPlus_V3.3_install.tar.gz \
             && rm WebGrabPlus_V3.3_install.tar.gz  \
-            && mv .wg++/ /config/tvheadend/wg++  \
-            && cd /config/tvheadend/wg++  \
+            && mv .wg++/ /homeassistant/tvheadend/wg++  \
+            && cd /homeassistant/tvheadend/wg++  \
             && ./install.sh \
             && rm -rf siteini.pack/  \
             && wget http://webgrabplus.com/sites/default/files/download/ini/SiteIniPack_current.zip \
@@ -27,7 +27,7 @@ webgrabplus_install(){
             && rm SiteIniPack_current.zip \
             && cp siteini.pack/India/* siteini.user/ \
             && wget -O /usr/bin/tv_grab_wg++ http://www.webgrabplus.com/sites/default/files/tv_grab_wg.txt \
-            && sed -i 's|~/.wg++/guide.xml|/config/tvheadend/wg++/guide.xml|g' /usr/bin/tv_grab_wg++ \
+            && sed -i 's|~/.wg++/guide.xml|/homeassistant/tvheadend/wg++/guide.xml|g' /usr/bin/tv_grab_wg++ \
             && chmod a+x /usr/bin/tv_grab_wg++
         else
             bashio::log.info '[Webgrab+] APK: Critical error. Unable install required packages.'
@@ -43,10 +43,10 @@ webgrabplus_install(){
 }
 
 # Ensure directory exists
-if ! bashio::fs.directory_exists '/config/tvheadend/'; then
-    bashio::log.info "Creating default configuration directory at /config/tvheadend/"
-    mkdir -p /config/tvheadend/recordings
-    timeout 20s /usr/bin/tvheadend --firstrun -u root -g root -c /config/tvheadend
+if ! bashio::fs.directory_exists '/homeassistant/tvheadend/'; then
+    bashio::log.info "Creating default configuration directory at /homeassistant/tvheadend/"
+    mkdir -p /homeassistant/tvheadend/recordings
+    timeout 20s /usr/bin/tvheadend --firstrun -u root -g root -c /homeassistant/tvheadend
 fi
 
 if check_webgrabplus; then

@@ -1,1 +1,1 @@
-0 0 * * * /config/tvheadend/wg++/run.sh
+0 0 * * * /homeassistant/tvheadend/wg++/run.sh

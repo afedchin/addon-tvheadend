@@ -25,7 +25,8 @@ ports_description:
   9982/tcp: TVH HTSP
   8888/tcp: OSCam Web Interface
 map:
-  - "config:rw"
+  - homeassistant_config:rw
+  - media:rw
 options:
   system_packages: []
   init_commands: []

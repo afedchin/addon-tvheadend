@@ -7,12 +7,12 @@ COPY requirements.txt /tmp/
 RUN \
     apk update \
     && apk add --no-cache --virtual .build-deps \
-        musl-dev=1.2.4-r1 \
+        musl-dev=1.2.4-r2 \
         gcc=12.2.1_git20220924-r10 \
         g++=12.2.1_git20220924-r10 \
-        libxml2-dev=2.11.4-r0 \
+        libxml2-dev=2.11.6-r0 \
         libxslt-dev=1.1.38-r0 \
-        python3-dev=3.11.5-r0 \
+        python3-dev=3.11.6-r0 \
     && apk add --no-cache \
         tvheadend=4.2.8-r6 \
         oscam=1.20_svn20201119-r4 \
