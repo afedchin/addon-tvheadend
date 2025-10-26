@@ -8,6 +8,7 @@
 bashio::log.info "Starting tvhProxy..."
 
 # Configure app
+export TVH_URL=$(bashio::config 'TVH_URL')
 export TVH_BINDADDR=$(bashio::config 'TVH_BINDADDR')
 export TVH_PROXY_HOST=$(bashio::config 'TVH_PROXY_HOST')
 export TVH_PROXY_PORT=$(bashio::config 'TVH_PROXY_PORT')
@@ -17,6 +18,7 @@ export TVH_CHUNK_SIZE=$(bashio::config 'TVH_CHUNK_SIZE')
 export TVH_PROFILE=$(bashio::config 'TVH_PROFILE')
 
 {
+    printf "%s\n" "TVH_URL=\"${TVH_URL}\""
     printf "%s\n" "TVH_BINDADDR=\"${TVH_BINDADDR}\""
     printf "%s\n" "TVH_PROXY_HOST=\"${TVH_PROXY_HOST}\""
     printf "%s\n" "TVH_PROXY_PORT=\"${TVH_PROXY_PORT}\""
